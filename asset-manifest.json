@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/hszy/static/css/main.52e7bc6c.css",
+    "main.js": "/hszy/static/js/main.c8c00821.js",
+    "index.html": "/hszy/index.html",
+    "main.52e7bc6c.css.map": "/hszy/static/css/main.52e7bc6c.css.map",
+    "main.c8c00821.js.map": "/hszy/static/js/main.c8c00821.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.52e7bc6c.css",
+    "static/js/main.c8c00821.js"
+  ]
+}
