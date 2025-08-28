@@ -40,11 +40,11 @@ const LoginPage: React.FC = () => {
 
   // 模拟用户数据
   const mockUsers = [
-    { username: 'admin', password: '123456', role: '系统管理员', name: '管理员' },
-    { username: 'community', password: '123456', role: '社区管理员', name: '张志强' },
-    { username: 'property', password: '123456', role: '物业管理员', name: '李秀英' },
-    { username: 'security', password: '123456', role: '安保人员', name: '王德华' },
-    { username: 'service', password: '123456', role: '服务人员', name: '刘明辉' }
+    { username: 'admin', password: 'admin123', role: '系统管理员', name: '管理员' },
+    { username: 'community', password: 'admin123', role: '社区管理员', name: '张志强' },
+    { username: 'property', password: 'admin123', role: '物业管理员', name: '李秀英' },
+    { username: 'security', password: 'admin123', role: '安保人员', name: '王德华' },
+    { username: 'service', password: 'admin123', role: '服务人员', name: '刘明辉' }
   ];
 
   const handleLogin = async (values: LoginForm) => {
