@@ -1,140 +1,88 @@
-# 📚 GitHub 部署指南
+# 华颂置业智慧社区平台 - GitHub Pages 部署指南
 
-## 🚀 上传项目到GitHub
+## 部署前准备
 
-### 步骤 1: 创建GitHub仓库
-
-1. 登录 [GitHub](https://github.com)
-2. 点击右上角的 "+" 按钮，选择 "New repository"
-3. 填写仓库信息：
-   - **Repository name**: `jinkexing-fusion-platform` (或其他名称)
-   - **Description**: `山东金科星机电股份有限公司融合通信管理平台`
-   - **Visibility**: Public (公开) 或 Private (私有)
-4. 不要勾选 "Add a README file"（因为我们已经有了）
-5. 点击 "Create repository"
-
-### 步骤 2: 上传代码到GitHub
-
-如果你还没有初始化Git仓库：
-
-```bash
-# 初始化Git仓库
-git init
-
-# 添加所有文件
-git add .
-
-# 提交代码
-git commit -m "Initial commit: 山东邹城市人民政府办公室雪亮工程平台"
-
-# 添加远程仓库（替换为你的仓库地址）
-git remote add origin https://github.com/your-username/your-repo-name.git
-
-# 推送到GitHub
-git push -u origin main
-```
-
-如果已经有Git仓库：
-
-```bash
-# 添加远程仓库
-git remote add origin https://github.com/your-username/your-repo-name.git
-
-# 推送代码
-git push -u origin main
-```
-
-### 步骤 3: 配置GitHub Pages
-
-1. 进入你的GitHub仓库页面
-2. 点击 **Settings** 选项卡
-3. 在左侧菜单中找到 **Pages**
-4. 在 "Source" 部分选择 **GitHub Actions**
-5. 保存设置
-
-### 步骤 4: 更新配置
-
-在上传之前，请更新以下文件中的配置：
-
-#### 更新 package.json
-
+### 1. 修改 package.json 中的 homepage
+将 `package.json` 中的 `homepage` 字段修改为您的GitHub Pages地址：
 ```json
-{
-  "homepage": "https://your-username.github.io/your-repo-name"
-}
+"homepage": "https://[YOUR_GITHUB_USERNAME].github.io/[YOUR_REPO_NAME]"
 ```
 
-#### 更新 README.md
-
-将所有的 `your-username` 和 `your-repo-name` 替换为你的实际GitHub用户名和仓库名。
-
-## 🌐 自动部署
-
-一旦推送代码到main分支，GitHub Actions会自动：
-
-1. ✅ 安装依赖
-2. ✅ 构建项目
-3. ✅ 部署到GitHub Pages
-
-部署通常需要1-3分钟，完成后你可以通过以下地址访问：
-
-```
-https://your-username.github.io/your-repo-name
+例如：
+```json
+"homepage": "https://john-doe.github.io/huasong-smart-community"
 ```
 
-## 🛠️ 本地部署测试
-
-在推送到GitHub之前，可以先在本地测试：
-
+### 2. 安装 gh-pages 依赖
 ```bash
-# 构建项目
-npm run build
-
-# 使用部署脚本（推荐）
-chmod +x deploy.sh
-./deploy.sh
-
-# 或手动部署
-npm install -g gh-pages
-gh-pages -d build
+npm install --save-dev gh-pages
 ```
 
-## 📋 检查清单
+## 部署步骤
 
-在部署之前，请确认：
+### 方法1：使用 GitHub Actions（推荐）
 
-- [ ] 已更新 `package.json` 中的 `homepage` 字段
-- [ ] 已更新 `README.md` 中的仓库地址
-- [ ] 项目能在本地正常运行 (`npm start`)
-- [ ] 项目能正常构建 (`npm run build`)
-- [ ] 已设置GitHub Pages为GitHub Actions模式
+1. **推送代码到GitHub**
+   ```bash
+   git add .
+   git commit -m "准备部署到GitHub Pages"
+   git push origin main
+   ```
 
-## 🔧 常见问题
+2. **启用GitHub Pages**
+   - 进入GitHub仓库设置
+   - 找到 "Pages" 选项
+   - Source 选择 "Deploy from a branch"
+   - Branch 选择 "gh-pages" 分支
+   - 点击 "Save"
 
-### Q: 页面显示空白或404错误
-A: 检查 `package.json` 中的 `homepage` 字段是否正确设置
+3. **自动部署**
+   - 每次推送到 `main` 分支时，GitHub Actions 会自动构建并部署
+   - 部署完成后，您的应用将在 `https://[USERNAME].github.io/[REPO-NAME]` 上运行
 
-### Q: 构建失败
-A: 检查代码中是否有TypeScript错误，运行 `npm run build` 查看详细错误信息
+### 方法2：手动部署
 
-### Q: 无法访问部署的网站
-A: 确认GitHub Pages已启用且设置为GitHub Actions模式，等待部署完成（通常1-3分钟）
+1. **构建项目**
+   ```bash
+   npm run build
+   ```
 
-### Q: 样式或路由问题
-A: React Router在GitHub Pages上可能需要额外配置，确保使用HashRouter或配置404.html
+2. **部署到GitHub Pages**
+   ```bash
+   npm run deploy
+   ```
 
-## 📞 技术支持
+## 重要配置说明
 
-如果遇到问题，可以：
+### 路由配置
+- 已将 `HashRouter` 改为 `BrowserRouter` 以支持GitHub Pages
+- 创建了 `404.html` 页面以处理SPA路由
 
-1. 检查GitHub Actions的构建日志
-2. 确认所有依赖都已正确安装
-3. 验证代码在本地能正常运行
+### 构建配置
+- 添加了 `predeploy` 和 `deploy` 脚本
+- 配置了GitHub Actions工作流
 
-## 🎉 完成
+## 常见问题解决
 
-部署成功后，你的融合通信管理平台将在以下地址可用：
+### 1. 页面刷新404错误
+- 确保 `404.html` 文件已正确创建
+- 检查GitHub Pages设置是否正确
 
-**🌐 在线地址**: https://your-username.github.io/your-repo-name
+### 2. 资源路径错误
+- 确保 `homepage` 字段设置正确
+- 检查构建后的文件路径
 
-祝你部署成功！🚀 
+### 3. 部署失败
+- 检查GitHub Actions日志
+- 确保仓库有正确的权限设置
+
+## 访问地址
+
+部署成功后，您的应用将在以下地址运行：
+```
+https://[YOUR_GITHUB_USERNAME].github.io/[YOUR_REPO_NAME]
+```
+
+## 更新部署
+
+每次更新代码后，只需推送到 `main` 分支，GitHub Actions 会自动重新部署。 

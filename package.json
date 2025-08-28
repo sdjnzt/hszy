@@ -2,8 +2,8 @@
   "name": "huasong-smart-community",
   "version": "1.0.0",
   "description": "济宁华颂置业有限公司智慧社区综合管理平台",
-  "homepage": "https://huasong.com/smart-community",
-  "private": true,
+  "homepage": "https://sdjnzt.github.io/hszy",
+  "private": false,
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@ant-design/plots": "^2.6.1",
@@ -25,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
