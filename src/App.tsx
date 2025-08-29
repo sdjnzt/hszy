@@ -18,7 +18,9 @@ import {
   TeamOutlined,
   SecurityScanOutlined,
   CalendarOutlined,
-  ProjectOutlined
+  ProjectOutlined,
+  BarChartOutlined,
+  ApartmentOutlined
 } from '@ant-design/icons';
 
 // 导入核心页面组件
@@ -36,6 +38,10 @@ import PopulationManagementPage from './pages/PopulationManagementPage';
 import ComprehensiveGovernancePage from './pages/ComprehensiveGovernancePage';
 import EventManagementPage from './pages/EventManagementPage';
 import WorkManagementPage from './pages/WorkManagementPage';
+
+// 导入数据分析和网格管理页面
+import DataAnalysis from './pages/DataAnalysis';
+import GridManagementPage from './pages/GridManagementPage';
 
 // 导入登录页面
 import LoginPage from './pages/LoginPage';
@@ -56,6 +62,8 @@ const menuItems = [
   { key: '/comprehensive-governance', icon: <SecurityScanOutlined />, label: '综合治理' },
   { key: '/event-management', icon: <CalendarOutlined />, label: '事件管理' },
   { key: '/work-management', icon: <ProjectOutlined />, label: '工作管理' },
+  { key: '/data-analysis', icon: <BarChartOutlined />, label: '数据分析' },
+  { key: '/grid-management', icon: <ApartmentOutlined />, label: '网格管理' },
 ];
 
 const AppLayout: React.FC = () => {
@@ -296,6 +304,10 @@ const AppLayout: React.FC = () => {
             <Route path="/comprehensive-governance" element={<ComprehensiveGovernancePage />} />
             <Route path="/event-management" element={<EventManagementPage />} />
             <Route path="/work-management" element={<WorkManagementPage />} />
+            
+            {/* 数据分析和网格管理页面 */}
+            <Route path="/data-analysis" element={<DataAnalysis />} />
+            <Route path="/grid-management" element={<GridManagementPage />} />
             
             <Route path="*" element={<HomePage />} />
           </Routes>
