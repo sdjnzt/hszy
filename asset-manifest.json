@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/hszy/static/css/main.52e7bc6c.css",
-    "main.js": "/hszy/static/js/main.804b457e.js",
+    "main.js": "/hszy/static/js/main.e643ddb3.js",
     "index.html": "/hszy/index.html",
     "main.52e7bc6c.css.map": "/hszy/static/css/main.52e7bc6c.css.map",
-    "main.804b457e.js.map": "/hszy/static/js/main.804b457e.js.map"
+    "main.e643ddb3.js.map": "/hszy/static/js/main.e643ddb3.js.map"
   },
   "entrypoints": [
     "static/css/main.52e7bc6c.css",
-    "static/js/main.804b457e.js"
+    "static/js/main.e643ddb3.js"
   ]
 }
